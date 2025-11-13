@@ -30,7 +30,7 @@ To run this project on your local machine, follow these steps:
 
 4.  **Create the Database and Table:**
     *   Open your web browser and go to `http://localhost/phpmyadmin/`.
-    *   Create a new database named `lastname_db`.
+    *   Create a new database. You can name it anything you like, for example, `your_name_db`. Remember this name as you will need to update `database.php` with it.
     *   Select the `lastname_db` database and go to the "SQL" tab.
     *   Run the following SQL query to create the `products` table:
 
