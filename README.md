@@ -1,11 +1,10 @@
+# PHP Simple CRUD Project with Database Relationships
 
-# PHP Simple CRUD Project
-
-This project is a simple web application that demonstrates how to perform CRUD (Create, Read, Update, Delete) operations using PHP and a MySQL database. It's designed for students to learn the basics of web development with these technologies.
+This project is a simple web application that demonstrates how to perform CRUD (Create, Read, Update, Delete) operations using PHP and a MySQL database. It's designed for students to learn the basics of web development with these technologies, including how to use foreign keys and joins to manage related data.
 
 ## Current Status
 
-The "Read" functionality is already implemented. The main page (`index.php`) displays a list of products from the database.
+The "Read" functionality is already implemented for a single `products` table. The main page (`index.php`) displays a list of products from the database. Your task is to expand the database schema, implement full CRUD functionality, and use joins to display related data.
 
 ## Technologies Used
 
@@ -28,59 +27,47 @@ To run this project on your local machine, follow these steps:
     *   Open the XAMPP Control Panel.
     *   Start the "Apache" and "MySQL" modules.
 
-4.  **Create the Database and Table:**
+4.  **Create the Database and Tables:**
     *   Open your web browser and go to `http://localhost/phpmyadmin/`.
     *   Create a new database. You can name it anything you like, for example, `your_name_db`. Remember this name as you will need to update `database.php` with it.
-    *   Select the `lastname_db` database and go to the "SQL" tab.
-    *   Run the following SQL query to create the `products` table:
-
-        ```sql
-        CREATE TABLE products (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            price DECIMAL(10, 2) NOT NULL,
-            quantity INT(10) NOT NULL,
-            reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-        );
-        ```
+    *   Inside your new database, you will need to create the following tables: `categories`, `products`, `customers`, `orders`, and `order_items`.
+    *   You will need to define the columns for each table and set up the relationships between them using foreign keys.
 
 5.  **View the Project:**
     *   Open your web browser and navigate to `http://localhost/semblante_site/` (or the name you gave your project folder).
     *   You should see the project running, but with "0 results" since the database is empty.
 
-## Your Task: Implement Full CRUD Functionality
+## Your Task: Implement Full CRUD Functionality and Joins
 
-Your main task is to implement the Create, Update, and Delete functionalities.
+Your main task is to implement the Create, Update, and Delete functionalities for the new tables and use `JOIN` clauses to display related data.
 
-### 1. Create: Add New Products
+### 1. Manage Categories and Products (CRUD)
 
-*   Create a new PHP file (e.g., `create.php`) with an HTML form to add a new product. The form should have fields for `name`, `price`, and `quantity`.
-*   The form should submit the data to a PHP script that inserts the new product into the `products` table.
-*   Add a link or button on the `index.php` page to navigate to the "Add Product" page.
+*   **Create:**
+    *   Create a form to add new categories.
+    *   Create a form to add new products, including a dropdown to select the product's category.
+*   **Read:**
+    *   On the `index.php` page, modify the query to use a `JOIN` to display the category name next to each product.
+*   **Update:**
+    *   Create a form to edit existing products, including their category.
+*   **Delete:**
+    *   Implement functionality to delete products.
 
-### 2. Update: Edit Existing Products
+### 2. Manage Customers and Orders
 
-*   On the `index.php` page, add an "Edit" button next to each product.
-*   This button should link to a new PHP file (e.g., `edit.php`) and pass the `id` of the product to be edited (e.g., `edit.php?id=1`).
-*   The `edit.php` page should:
-    *   Fetch the product's current data from the database.
-    *   Display a form pre-filled with the product's information.
-    *   Allow the user to modify the data and submit the form.
-*   The form submission should update the product's record in the database.
-
-### 3. Delete: Remove Products
-
-*   On the `index.php` page, add a "Delete" button next to each product.
-*   This button should trigger a PHP script that deletes the corresponding product from the database. You can pass the product `id` to a `delete.php` script (e.g., `delete.php?id=1`).
-*   **Important:** For a better user experience, you can use JavaScript to show a confirmation dialog before deleting a product.
+*   **Create:**
+    *   Create a form to add new customers.
+    *   Create a simple interface to create a new order for a customer, allowing them to select one or more products. This will involve inserting records into the `orders` and `order_items` tables.
+*   **Read:**
+    *   Create a page to display a list of all orders.
+    *   For each order, display the customer's name and the total number of items. Use a `JOIN` to get the customer's name.
+    *   Create a page to view the details of a single order, listing all the products in that order, their quantities, and prices. This will require `JOIN` operations across `orders`, `order_items`, and `products`.
 
 ## File Structure
 
 *   `index.php`: The main page that displays the list of products (Read).
 *   `database.php`: Handles the connection to the MySQL database.
 *   `style.css`: Contains the CSS styles for the project.
-*   `create.php` (You need to create this)
-*   `edit.php` (You need to create this)
-*   `delete.php` (You need to create this)
+*   You will need to create new files for the additional CRUD functionalities (e.g., `add_product.php`, `edit_product.php`, `manage_categories.php`, `view_orders.php`, etc.).
 
 Good luck!
